@@ -29,8 +29,10 @@ try{
 res.end()
 
 }catch(err){
+    const chemainAbsolu500HTML = path.join('./public/pages/404.html')
+    const letureHtml = fs.readFileSync(chemainAbsolu500HTML, "utf-8")
     res.writeHead(500, { "content-type": "text/html" });
-    res.write("<h1> 500 Erreur Interne au Serveur </h1>");
+    res.write(letureHtml);
     res.end();
 }
 });
