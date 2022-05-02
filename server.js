@@ -14,8 +14,10 @@ try{
         res.write(letureHtml)
         
     }else{
+        const chemainAbsolu401HTML = path.join('./public/pages/401.html')
+        const letureHtml = fs.readFileSync(chemainAbsolu401HTML, "utf-8")
         res.writeHead(401, { "content-type": "text/html" });
-        res.write("<h1>401 Méthode non authorisée</h2>"); 
+        res.write(letureHtml); 
     }
   }else {
       res.writeHead(404, { "content-type": "text/html" });
