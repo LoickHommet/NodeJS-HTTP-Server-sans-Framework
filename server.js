@@ -20,8 +20,10 @@ try{
         res.write(letureHtml); 
     }
   }else {
-      res.writeHead(404, { "content-type": "text/html" });
-      res.write("<h1> 404 Page Introuvable</h1>");
+        const chemainAbsolu404HTML = path.join('./public/pages/404.html')
+        const letureHtml = fs.readFileSync(chemainAbsolu404HTML, "utf-8")
+        res.writeHead(404, { "content-type": "text/html" });
+        res.write(letureHtml);
       
     }   
 res.end()
