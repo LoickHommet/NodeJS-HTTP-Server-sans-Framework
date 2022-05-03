@@ -34,7 +34,7 @@ res.end()
     res.writeHead(500, { "content-type": "text/html" });
     res.write(letureHtml);
     res.end();
-}
+  }
 });
 
 server.listen(4000);
