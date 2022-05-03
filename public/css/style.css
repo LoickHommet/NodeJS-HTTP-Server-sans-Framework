@@ -1,3 +1,10 @@
 h2{
     color: blue;
 }
+
+
+img{
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
+}
