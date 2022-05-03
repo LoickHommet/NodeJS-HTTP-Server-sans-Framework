@@ -17,26 +17,30 @@ const server = http.createServer((req, res) => {
         res.writeHead(401, { "content-type": "text/html" });
         res.write(letureHtml);
       }
-    } else if (req.url == "/public/images/symfony.jpg") {
-      const chemainAbsoluImageHTML = path.join("./public/images/symfony.jpg");
-      const letureHtml = fs.readFileSync(chemainAbsoluImageHTML);
-      res.writeHead(200, { "content-type": "image/jpg" });
-      res.write(letureHtml);
+    } else if (req.url == "/public/symfony.jpg") {
+      if (req.method == "GET") {
+         let extension = path.extname(req.url);
+         extension = extension.slice(1,extension.length)
+          const chemainAbsoluImageHTML = path.join(`./public/${extension}/symfony.jpg`);
+          const letureHtml = fs.readFileSync(chemainAbsoluImageHTML);
+          res.writeHead(200, { "content-type": "image/jpg" });
+          res.write(letureHtml);
+        
+      }
     } else if (req.url == "/public/css/style.css") {
-        if (req.method == "GET") {
-            const chemainAbsoluCssHTML = path.join("./public/css/style.css");
-            const letureHtml = fs.readFileSync(chemainAbsoluCssHTML);
-            res.writeHead(200, { "content-type": "text/css" });
-            res.write(letureHtml);
-        }
-    
+      if (req.method == "GET") {
+        const chemainAbsoluCssHTML = path.join("./public/css/style.css");
+        const letureHtml = fs.readFileSync(chemainAbsoluCssHTML);
+        res.writeHead(200, { "content-type": "text/css" });
+        res.write(letureHtml);
+      }
     } else if (req.url == "/public/js/script.js") {
-        if (req.method == "GET") {
-            const chemainAbsoluCssHTML = path.join("./public/js/script.js");
-            const letureHtml = fs.readFileSync(chemainAbsoluCssHTML);
-            res.writeHead(200, { "content-type": "text/script" });
-            res.write(letureHtml);
-        }
+      if (req.method == "GET") {
+        const chemainAbsoluCssHTML = path.join("./public/js/script.js");
+        const letureHtml = fs.readFileSync(chemainAbsoluCssHTML);
+        res.writeHead(200, { "content-type": "text/script" });
+        res.write(letureHtml);
+      }
     } else {
       const chemainAbsolu404HTML = path.join("./public/pages/404.html");
       const letureHtml = fs.readFileSync(chemainAbsolu404HTML, "utf-8");
